@@ -1,0 +1,39 @@
+plugins {
+    id "org.jenkins-ci.jpi" version "0.18.1"
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+group = appGroup
+version = appVersion
+description = "A plugin to encapsulate Accuity build workflow"
+sourceCompatibility = 1.7
+
+jenkinsPlugin {
+    // Version of Jenkins core this plugin depends on
+    coreVersion = "1.626"
+    // Human-readable name of plugin.
+    displayName = "Accuity Build Plugin"
+    // URL for plugin on Jenkins wiki or elsewhere.
+    url = "https://github.com/Accuity/jenkins-build-plugin"
+    // Plugin URL on GitHub. Optional.
+    gitHubUrl = "https://github.com/Accuity/jenkins-build-plugin"
+    // Plugin ID, defaults to the project name without trailing '-plugin'
+    shortName = "accuity-build"
+}
+
+// This section should come after jenkinsPlugin section
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.code-house:jackson:2.7.6'
+    compile 'org.codehaus.groovy:groovy-all:1.8.9'
+    compile 'com.sun.jersey:jersey-client:1.19'
+    compile 'com.sun.jersey.contribs:jersey-multipart:1.19'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-1.8'
+    testCompile 'org.mockito:mockito-core:1+'
+}

@@ -1,0 +1,36 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <f:entry title="Repository" field="repository">
+        <f:textbox />
+    </f:entry>
+
+    <f:validateButton title="Test Repository" progress="Testing..."
+                      method="testRepository" with="repository" />
+
+    <f:optionalBlock title="Override Defaults" field="overrideDefaults"
+                     checked="${descriptor.overrideDefaults()}" inline="true">
+
+        <f:entry title="Group" field="artifactGroup">
+            <f:textbox />
+        </f:entry>
+
+        <f:entry title="Name" field="artifactName">
+            <f:textbox />
+        </f:entry>
+
+        <f:entry title="Version" field="artifactVersion">
+            <f:textbox />
+        </f:entry>
+
+        <f:entry title="Path" field="artifactPath">
+            <f:textbox />
+        </f:entry>
+
+        <f:entry title="Pom Path" field="pomFilePath">
+            <f:textbox />
+        </f:entry>
+
+    </f:optionalBlock>
+
+</j:jelly>

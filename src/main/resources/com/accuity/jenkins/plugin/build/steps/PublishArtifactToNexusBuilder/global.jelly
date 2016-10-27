@@ -1,0 +1,23 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <!--
+      This Jelly script is used to produce the global configuration options on the "Configure System" page.
+    -->
+    <f:section title="Publish to Nexus">
+
+        <f:entry title="Nexus URL" field="nexusUrl" description="e.g. http://nexus.example.com/nexus">
+            <f:textbox />
+        </f:entry>
+
+        <f:entry title="User" field="nexusUser">
+            <f:textbox />
+        </f:entry>
+
+        <f:entry title="Password" field="nexusPassword">
+            <f:password />
+        </f:entry>
+
+        <f:validateButton title="Test Connection" progress="Testing..."
+                method="testConnection" with="nexusUrl,nexusUser,nexusPassword" />
+    </f:section>
+
+</j:jelly>

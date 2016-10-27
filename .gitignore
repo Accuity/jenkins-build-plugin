@@ -1,0 +1,15 @@
+ # IntelliJ
+.idea
+*.iml
+
+# Gradle
+/.gradle
+/build
+/out
+
+# Jenkins JPI
+/work
+
+# Vagrant
+.vagrant
+slave
