@@ -1,5 +1,6 @@
 package com.accuity.jenkins.plugin.build.versioning
 
+import com.accuity.jenkins.plugin.build.Logger
 import com.accuity.jenkins.plugin.build.Parameters
 import hudson.EnvVars
 
@@ -34,9 +35,9 @@ class VersionHelper {
      * @return
      *      Categorised version string
      */
-    static String addVersionCategory(EnvVars envVars, String version) {
+    static String addVersionCategory(EnvVars envVars, String version, Logger logger) {
         // Hard code it to use git branch categories for now
-        Categorizer categorizer = new GitBranchCategorizer()
+        Categorizer categorizer = new GitBranchCategorizer(logger)
         return categorizer.addCategory(envVars, version)
     }
 }

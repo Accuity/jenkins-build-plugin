@@ -59,7 +59,7 @@ class VersionStringBuilder extends Builder {
 
         // envVars is just a clone so inserting vars won't end up in job variables
         envVars.put(GitBranchCategorizer.mainBranchVariable, mainBranch)
-        version = VersionHelper.addVersionCategory(envVars, version)
+        version = VersionHelper.addVersionCategory(envVars, version, logger)
 
         BuildModifier.addVariable(build, outputVariable, version)
         BuildModifier.setBuildName(build, version)

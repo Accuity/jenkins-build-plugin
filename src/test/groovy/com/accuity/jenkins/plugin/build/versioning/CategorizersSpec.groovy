@@ -1,11 +1,18 @@
 package com.accuity.jenkins.plugin.build.versioning
 
+import com.accuity.jenkins.plugin.build.Logger
 import hudson.EnvVars
 import spock.lang.Specification
+import groovy.transform.InheritConstructors
 
 class CategorizersSpec extends Specification {
 
-    class FormatCheckCategorizer extends Categorizer{
+    class FormatCheckCategorizer extends Categorizer {
+
+        FormatCheckCategorizer(Logger logger) {
+            super(logger)
+        }
+
         @Override
         String addCategory(EnvVars envVars, String version) {
             def category = version
@@ -14,8 +21,9 @@ class CategorizersSpec extends Specification {
     }
 
     def mockEnvVars = Mock(EnvVars)
-    def formatCheckCategorizer = new FormatCheckCategorizer()
-    def gitBranchCategorizer   = new GitBranchCategorizer()
+    def mockLogger  = Mock(Logger)
+    def formatCheckCategorizer = new FormatCheckCategorizer(mockLogger)
+    def gitBranchCategorizer   = new GitBranchCategorizer(mockLogger)
 
     def 'formatCategory should return a clean version string'() {
         expect:
